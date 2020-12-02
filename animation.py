@@ -19,7 +19,7 @@ def makeanimation():
     import glob
 
     # get width, heigth, frames
-    f = open(filename, "./frames/0.ppm")
+    f = open("./frames/0.ppm", "r")
     line0 = f.readline()
     line1 = f.readline().split(" ")
     width, height  = int(line1[0]), int(line1[1])
