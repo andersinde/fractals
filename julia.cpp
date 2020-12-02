@@ -24,7 +24,7 @@ double juliaValueLog(int x, int y, double cr, double ci)  {
 	double zi = 2*dy*(float)y/height-dy; 
 	double zr2, zi2;
 
-    unsigned int max_iter = 128;
+	unsigned int max_iter = 128;
 
 	for (int i = 0; i<max_iter; i++) {
 		zr2 = zr*zr;
@@ -45,8 +45,8 @@ double juliaValueLogKeys(int x, int y, double cr, double ci)  {
 	double dy = 2;
 	complex<double> z(2*dx*(float)x/width-dx, 2*dy*(float)y/height-dy); 
 	complex<double> c(cr, ci);
-
-    unsigned int max_iter = 128;
+	
+	unsigned int max_iter = 128;
 
 	for (int i = 0; i<max_iter; i++) {
 		z = z * z + c;
@@ -65,7 +65,7 @@ double juliaValue(int x, int y, double cr, double ci)  {
     double zi = 4*(float)y/height-2;
 	double zr2, zi2;
 
-    unsigned int max_iter = 128;
+	unsigned int max_iter = 128;
 
 	for (int i = 0; i<max_iter; i++) {
 		//z = z * z + c;
@@ -90,7 +90,7 @@ int main() {
 		double cr = r*cos(angle);
 		double ci = r*sin(angle);
 
-	    ofstream my_Image ("frames/" + to_string(a) + ".ppm");
+		ofstream my_Image ("frames/" + to_string(a) + ".ppm");
 
 	    if (my_Image.is_open ()) {
 	        my_Image << "P3\n" << width << " " << height << " 255\n";
@@ -101,7 +101,7 @@ int main() {
 					int val = juliaValueLog(x, y, cr, ci);
 					my_Image << val<< ' ' << val << ' ' << val<< "\n";
 
-					//NOTE: values are larger than 255 so they are showed as val mod 255 in preview causing funny effects
+					//NOTE: values are larger than 255 so they are showed as val mod 256 in preview causing funny effects
 	            }
 	        }
 	    }
